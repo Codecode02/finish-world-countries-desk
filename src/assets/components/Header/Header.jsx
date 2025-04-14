@@ -4,10 +4,31 @@ function Header({ search, onSearchChange, region, onRegionChange, isIndependent,
 
 
     return (
-        <AppBar position="static" sx={{ padding: "10px", backgroundColor: "#f1f1f1" }}>
-            <Toolbar sx={{ display: "flex", flexWrap: "wrap", gap: "12px" }}>
-                <InputBase placeholder="search..." value={search} onChange={(e) => onSearchChange(e.target.value)} sx={{ height: 40, backgroundColor: 'white', borderRadius: 1, padding: '0 10px', flex: '1 1 300px' }} />
-                <FormControl sx={{ minWidth: 150, height: 40, backgroundColor: 'white', borderRadius: 1 }}>
+        <AppBar sx={{ position: "static", width:"auto" , top: 0, left: { xs: "unset", sm: "0" }, right: { xs: "0", sm: "unset" }, padding: "10px", backgroundColor: "#f1f1f1", flex: "0 0 auto" }} className="header">
+            <Typography variant="h6" component="div">
+                WORLD COUNTRIES DESK
+            </Typography>
+            <Toolbar
+                sx={{
+                    flexWrap: { sm: "wrap" },
+                    gap: { xs:"10px",sm: "12px" },
+                    padding: { sm: 0, xs: "10px" },
+                    display: { sm: "flex" },
+                    position: { xs: "fixed",sm:"static" },
+                    width: { xs: "125px",sm:"100%" },
+                    right: { xs: 0 },
+                    top: { xs: "103px" },
+                    left: { xs: "unset" },
+                    backgroundColor: { xs: "#f1f1f1" },
+                    borderRadius: { xs: "4px 0 0 4px" },
+                    overflow: { xs: "hidden" },
+                    display: {  xs: "flex" },
+                    flexDirection:{xs:"column",sm:"row"}
+                }}
+            >
+
+                <InputBase placeholder="search..." value={search} onChange={(e) => onSearchChange(e.target.value)} sx={{ height: 40, backgroundColor: 'white', borderRadius: 1, padding: '0 10px', flex: {xs:"auto"} }} />
+                <FormControl sx={{width:{xs:"100%",sm:"auto"}, minWidth: {sm: 150 }, height: 40, backgroundColor: 'white', borderRadius: 1 }}>
                     <Select displayEmpty sx={{ height: 40 }} value={region}
                         onChange={(e) => {
                             console.log("Region changed:", e.target.value);
@@ -26,7 +47,7 @@ function Header({ search, onSearchChange, region, onRegionChange, isIndependent,
                 </FormControl>
                 {
                     region && (
-                        <FormControl sx={{ minWidth: 150, height: 40, backgroundColor: 'white', borderRadius: 1 }}>
+                        <FormControl sx={{ minWidth: { xs: "100%", sm: 150 }, height: 40, backgroundColor: 'white', borderRadius: 1 }}>
                             <Select displayEmpty sx={{ height: 40 }} value={subregion} onChange={(e) => {
                                 console.log("Subregion changed", e.target.value);
                                 onSubregionChange(e.target.value)
@@ -44,11 +65,11 @@ function Header({ search, onSearchChange, region, onRegionChange, isIndependent,
                         </FormControl>
                     )
                 }
-                <Typography>
+                <Typography align="right">
                     Independent
                     <Switch checked={isIndependent} onChange={onIndependentToggle} />
                 </Typography>
-                <Button variant="contained" color="secondary" onClick={onClearFilters}>Clear Filter</Button>
+                <Button variant="contained" color="secondary" onClick={onClearFilters} sx={{ whiteSpace: "nowrap",width:{xs:"100%",sm:"auto"} }}>Clear Filter</Button>
             </Toolbar>
         </AppBar>
     );

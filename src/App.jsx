@@ -34,12 +34,14 @@ function App() {
     const inputText = search.toLowerCase();
 
     const name = item.name?.common?.toLowerCase() || "";
+    const regionText=item.region?.toLowerCase()||"";
+    const subregionText=item.subregion?.toLowerCase()||"";
     const capital = item.capital?.[0]?.toLowerCase() || "";
     const language = item.languages ? Object.values(item.languages).join(" ").toLowerCase() : "";
     const currencyName = item.currencies ? Object.values(item.currencies).map(item => item.name).join(" ").toLowerCase() : "";
     const currencySymbol = item.currencies ? Object.values(item.currencies).map(item => item.symbol).join(" ").toLowerCase() : "";
     const area = item.area?.toString() || "";
-    const sameName = capital.includes(inputText) || name.includes(inputText) || language.includes(inputText) || currencyName.includes(inputText) || currencySymbol.includes(inputText) || area.includes(inputText);
+    const sameName = regionText.includes(inputText)||subregionText.includes(inputText)||capital.includes(inputText) || name.includes(inputText) || language.includes(inputText) || currencyName.includes(inputText) || currencySymbol.includes(inputText) || area.includes(inputText);
 
     const sameRegion = region ? item.region === region : true;
     const sameSubRegion = subregion ? item.subregion === subregion : true;
@@ -51,9 +53,7 @@ function App() {
 
   return (
     <>
-      <Box >
-        <Grid>
-          <Grid item xs={2}>
+      <Box height="100%" sx={{display:"flex",flexDirection:"column"}}>
             <Header search={search}
               onSearchChange={setSearch}
               region={region}
@@ -68,11 +68,7 @@ function App() {
               onIndependentToggle={() => setIsIndependent(!isIndependent)}
               onClearFilters={handleClearFilters}
             />
-          </Grid>
-          <Grid item xs={8}>
             <CountriesList countries={filterCountries} />
-          </Grid>
-        </Grid>
       </Box>
     </>
   )
