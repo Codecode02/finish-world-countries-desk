@@ -67,7 +67,7 @@ function Header({ search, onSearchChange, region, onRegionChange, isIndependent,
                 }
                 <Typography align="right">
                     Independent
-                    <Switch checked={isIndependent} onChange={onIndependentToggle} />
+                    <Switch checked={isIndependent} onChange={onIndependentToggle} color="secondary"/>
                 </Typography>
                 <Button variant="contained" color="secondary" onClick={onClearFilters} sx={{ whiteSpace: "nowrap",width:{xs:"100%",sm:"auto"},fontSize:{xs:"13px"} }}>Clear Filter</Button>
             </Toolbar>
