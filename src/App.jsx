@@ -45,10 +45,10 @@ function App() {
 
     const sameRegion = region ? item.region === region : true;
     const sameSubRegion = subregion ? item.subregion === subregion : true;
-    const independent = isIndependent ? item.independent === true : true;
+    const sameIndependent = !isIndependent || item.independent === true;
 
 
-    return sameName && sameRegion && sameSubRegion && independent;
+    return sameName && sameRegion && sameSubRegion && sameIndependent;
   })
 
   return (

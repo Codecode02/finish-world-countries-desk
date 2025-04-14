@@ -4,7 +4,7 @@ function Header({ search, onSearchChange, region, onRegionChange, isIndependent,
 
 
     return (
-        <AppBar sx={{ position: "static", width:"auto" , top: 0, left: { xs: "unset", sm: "0" }, right: { xs: "0", sm: "unset" }, padding: "10px", backgroundColor: "#f1f1f1", flex: "0 0 auto" }} className="header">
+        <AppBar sx={{ position: "static", width:"auto" , top: 0, left: { xs: "unset", sm: "0" }, right: { xs: "0", sm: "unset" }, padding: "10px", backgroundColor: "#dddddd", flex: "0 0 auto" }} className="header">
             <Typography variant="h6" component="div">
                 WORLD COUNTRIES DESK
             </Typography>
@@ -19,7 +19,7 @@ function Header({ search, onSearchChange, region, onRegionChange, isIndependent,
                     right: { xs: 0 },
                     top: { xs: "103px" },
                     left: { xs: "unset" },
-                    backgroundColor: { xs: "#f1f1f1" },
+                    backgroundColor: { xs: "#dddddd" },
                     borderRadius: { xs: "4px 0 0 4px" },
                     overflow: { xs: "hidden" },
                     display: {  xs: "flex" },
@@ -47,7 +47,7 @@ function Header({ search, onSearchChange, region, onRegionChange, isIndependent,
                 </FormControl>
                 {
                     region && (
-                        <FormControl sx={{ minWidth: { xs: "100%", sm: 150 }, height: 40, backgroundColor: 'white', borderRadius: 1 }}>
+                        <FormControl sx={{width:{xs:"100%",sm:"auto"}, minWidth: { xs: "100%", sm: 150 }, height: 40, backgroundColor: 'white', borderRadius: 1 }}>
                             <Select displayEmpty sx={{ height: 40 }} value={subregion} onChange={(e) => {
                                 console.log("Subregion changed", e.target.value);
                                 onSubregionChange(e.target.value)
@@ -69,7 +69,7 @@ function Header({ search, onSearchChange, region, onRegionChange, isIndependent,
                     Independent
                     <Switch checked={isIndependent} onChange={onIndependentToggle} />
                 </Typography>
-                <Button variant="contained" color="secondary" onClick={onClearFilters} sx={{ whiteSpace: "nowrap",width:{xs:"100%",sm:"auto"} }}>Clear Filter</Button>
+                <Button variant="contained" color="secondary" onClick={onClearFilters} sx={{ whiteSpace: "nowrap",width:{xs:"100%",sm:"auto"},fontSize:{xs:"13px"} }}>Clear Filter</Button>
             </Toolbar>
         </AppBar>
     );
